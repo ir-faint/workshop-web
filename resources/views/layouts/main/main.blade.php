@@ -23,17 +23,16 @@
                         @yield('content')
                     </main>
                 </div>
-                <!-- content-wrapper ends -->
+
                 <!-- partial:partials/_footer.html -->
                     @include('layouts.main.footer')
                 <!-- partial -->
             </div>
-            <!-- main-panel ends -->
         </div>
         <!-- page-body-wrapper ends -->
     </div>
     @endguest
-    <!-- container-scroller -->
+
     <!-- plugins:js -->
     <script src="{{ asset('purple/assets/vendors/js/vendor.bundle.base.js')}}"></script>
     <!-- endinject -->

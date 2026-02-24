@@ -23,8 +23,8 @@
                         {{ session('status') }}
                     </div>
                 @endif --}}
-                <h4 class="font-weight-normal mb-3">Total Books <i class="mdi mdi-chart-line mdi-24px float-right"></i></h4>
-                <h2 class="mb-5">15,000</h2>
+                <h4 class="font-weight-normal mb-3">Total Buku <i class="mdi mdi-chart-line mdi-24px float-right"></i></h4>
+                <h2 class="mt-5">{{ count($buku) }}</h2>
             </div>
         </div>
     </div>

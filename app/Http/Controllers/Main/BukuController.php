@@ -42,6 +42,29 @@ class BukuController extends Controller
         $kode = $prefix . '-' . sprintf("%02d", $latestNum);
         $validated['kode'] = $kode;
         Buku::create($validated);
-        return redirect()->route('buku')->with('success', 'Buku berhasil ditambahkan! Kode buku:' . $kode);
+        return redirect()->route('buku')->with('success', 'Buku berhasil ditambahkan! Kode buku: ' . $kode);
+    }
+
+    public function update(Request $request)
+    {
+        $validated = $request->validate([
+            'judul' => 'required|string|max:500|unique:buku,judul,' . $request->idbuku . ',idbuku',
+            'pengarang' => 'required|string|max:200|unique:buku,pengarang,' . $request->idbuku . ',idbuku'
+        ]);
+        $buku = Buku::findOrFail($request->idbuku);
+
+        if ($request->judul === $buku->judul && $request->pengarang === $buku->pengarang) {
+            return back()->with('success', 'Detail Buku berhasil diubah!');
+        }
+
+        $buku->update($validated);
+        return back()->with('success', 'Detail Buku berhasil diubah!');
+    }
+
+    public function destroy(Request $request)
+    {
+        $buku = Buku::findOrFail($request->idbuku);
+        $buku->delete();
+        return back()->with('success', 'Buku berhasil dihapus!');
     }
 }

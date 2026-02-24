@@ -36,19 +36,24 @@
                 <i class="mdi mdi-book-open-page-variant menu-icon"></i>
             </a>
         </li>
-        {{-- <li class="nav-item">
+        {{-- pdf --}}
+        <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
-                <span class="menu-title">Forms</span>
+                <span class="menu-title">PDF</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
             <div class="collapse" id="forms">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/forms/basic_elements.html">Form Elements</a>
+                        <a class="nav-link" href="{{ route('pdf.potrait') }}">Potrait</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('pdf.landscape') }}">Landscape</a>
                     </li>
                 </ul>
             </div>
         </li>
+        {{-- 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Basic UI Elements</span>

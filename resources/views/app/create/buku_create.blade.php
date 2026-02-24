@@ -35,7 +35,7 @@
                         <input type="text" id="judul" name="judul" class="form-control" required maxlength="500">
                     </div>
                     <div class="form-group">
-                        <label for="pengarang">Pengarang</label>
+                        <label for="pengarang">Pengarang Buku</label>
                         <input type="text" id="pengarang" name="pengarang" class="form-control" required maxlength="200">
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-5">
