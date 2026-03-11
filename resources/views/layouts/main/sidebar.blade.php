@@ -37,7 +37,7 @@
             </a>
         </li>
         {{-- pdf --}}
-        <li class="nav-item">
+        <li class="nav-item {{ Request::is('pdf*') ? 'active' : '' }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
                 <span class="menu-title">PDF</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
@@ -52,6 +52,12 @@
                     </li>
                 </ul>
             </div>
+        </li> 
+        <li class="nav-item {{ Request::is('barang*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('barang') }}">
+                <span class="menu-title">Barang</span>
+                <i class="mdi mdi-archive menu-icon"></i>
+            </a>
         </li>
         {{-- 
         <li class="nav-item">

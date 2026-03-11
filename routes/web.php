@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Main\BukuController;
 use App\Http\Controllers\Main\KategoriController;
@@ -42,4 +43,8 @@ Route::middleware(['auth'])->group(function () {
     // pdf
     Route::get('/pdf/potrait', [PdfController::class, 'pdfPotrait'])->name('pdf.potrait');
     Route::get('/pdf/landscape', [PdfController::class, 'pdfLandscape'])->name('pdf.landscape');
+
+    // barang
+    Route::get('/barang', [BarangController::class, 'index'])->name('barang');
+    Route::post('/barang/label', [BarangController::class, 'label'])->name('barang.label');
 });
