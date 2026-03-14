@@ -47,4 +47,15 @@ Route::middleware(['auth'])->group(function () {
     // barang
     Route::get('/barang', [BarangController::class, 'index'])->name('barang');
     Route::post('/barang/label', [BarangController::class, 'label'])->name('barang.label');
+
+    // javascript
+    Route::get('/javascript/itemjs', function () {
+        return view('javascript.barangjs');
+    })->name('js.barangjs');
+    Route::get('/javascript/datatablesjs', function () {
+        return view('javascript.datatablesjs');
+    })->name('js.datatablesjs');
+    Route::get('/javascript/kotajs', function () {
+        return view('javascript.kotajs');
+    })->name('js.kotajs');
 });

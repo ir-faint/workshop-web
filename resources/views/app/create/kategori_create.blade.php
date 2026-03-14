@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="card-title">Create Kategori</div>
                 <div class="card-description">Tambah kategori baru</div>
-                <form action="{{ route('kategori.store') }}" method="POST">
+                <form id="formKategori" action="{{ route('kategori.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="nama_kategori">Nama Kategori</label>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-5">
                         <a href="{{ route('kategori') }}" class="btn btn-gradient-secondary btn-fw">Cancel</a>
-                        <button type="submit" class="btn btn-gradient-primary btn-fw">Submit</button>
+                        <button class="btn btn-gradient-primary btn-fw" onclick="submitForm(this, 'formKategori')">Submit</button>
                     </div>                   
                 </form>
             </div>

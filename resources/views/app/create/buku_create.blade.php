@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="card-title">Create Buku</div>
                 <div class="card-description">Tambah Buku baru</div>
-                <form action="{{ route('buku.store') }}" method="POST">
+                <form id="formBuku" action="{{ route('buku.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <select name="idkategori" class="form-select form-control-lg" required>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-5">
                         <a href="{{ route('buku') }}" class="btn btn-gradient-secondary btn-fw">Cancel</a>
-                        <button type="submit" class="btn btn-gradient-primary btn-fw">Submit</button>
+                        <button class="btn btn-gradient-primary btn-fw" onclick="submitForm(this, 'formBuku')">Submit</button>
                     </div>                   
                 </form>
             </div>

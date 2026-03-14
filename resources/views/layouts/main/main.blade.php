@@ -32,24 +32,38 @@
         <!-- page-body-wrapper ends -->
     </div>
     @endguest
-
+    
     <!-- plugins:js -->
-    <script src="{{ asset('purple/assets/vendors/js/vendor.bundle.base.js')}}"></script>
+        <script src="{{ asset('purple/assets/vendors/js/vendor.bundle.base.js')}}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
         {{-- <script src="assets/vendors/chart.js/chart.umd.js"></script>
         <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> --}}
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="{{ asset('purple/assets/js/off-canvas.js')}}"></script>
-    <script src="{{ asset('purple/assets/js/misc.js')}}"></script>
-    <script src="{{ asset('purple/assets/js/settings.js')}}"></script>
-    <script src="{{ asset('purple/assets/js/todolist.js')}}"></script>
-    <script src="{{ asset('purple/assets/js/jquery.cookie.js')}}"></script>
+        <script src="{{ asset('purple/assets/js/off-canvas.js')}}"></script>
+        <script src="{{ asset('purple/assets/js/misc.js')}}"></script>
+        <script src="{{ asset('purple/assets/js/settings.js')}}"></script>
+        <script src="{{ asset('purple/assets/js/todolist.js')}}"></script>
+        <script src="{{ asset('purple/assets/js/jquery.cookie.js')}}"></script>
+        <script>
+            function submitForm(buttonTag, formId) {
+                const form = document.getElementById(formId);
+
+                if (form.checkValidity()) {
+                    buttonTag.innerHTML = '<span class="spinner-border spinner-border-sm"></span><span> Loading...</span>';
+                    buttonElement.disabled = true;
+
+                    form.submit();
+                } else {
+                    form.reportValidity();
+                }
+            }
+        </script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    {{-- <script src="assets/js/dashboard.js"></script> --}}
-    @stack('script')
+        {{-- <script src="assets/js/dashboard.js"></script> --}}
+        @stack('script')
     <!-- End custom js for this page -->
   </body>
 </html>
