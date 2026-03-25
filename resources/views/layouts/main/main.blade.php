@@ -52,7 +52,7 @@
 
                 if (form.checkValidity()) {
                     buttonTag.innerHTML = '<span class="spinner-border spinner-border-sm"></span><span> Loading...</span>';
-                    buttonElement.disabled = true;
+                    buttonTag.disabled = true;
 
                     form.submit();
                 } else {

@@ -40,7 +40,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Ubah/Hapus Barang</h5>
+                <h5 class="modal-title">Update/Destroy Barang</h5>
             </div>
             <div class="modal-body">
                 <form id="formEditBarang">
@@ -57,7 +57,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" id="btnHapus">Hapus</button> <button type="button" class="btn btn-primary" id="btnUbah">Ubah</button>
+                <button type="button" class="btn btn-danger" id="btnDestroy">Destroy</button> <button type="button" class="btn btn-primary" id="btnUpdate">Update</button>
             </div>
         </div>
     </div>
@@ -120,24 +120,52 @@
         });
 
         // update modal
-        $('#btnUbah').click(function() {
+        $('#btnUpdate').click(function() {
             let form = document.getElementById('formEditBarang');
             if (form.checkValidity()) {
-                let updatedId = $('#editId').val();
-                let updatedNama = $('#editNama').val();
-                let updatedHarga = $('#editHarga').val();
+                let btn = $(this);
+                let btnOther = $('#btnDestroy');
 
-                currentRow.data([updatedId, updatedNama, updatedHarga]).draw(false);
-                $('#modalBarang').modal('hide');
+                let originalText = btn.text();
+                let originalTextOther = btnOther.text();
+
+                btn.html('<span class="spinner-border spinner-border-sm"></span><span> Loading...</span>').prop('disabled', true);
+                btnOther.html('<span class="spinner-border spinner-border-sm"></span><span> Loading...</span>').prop('disabled', true);
+
+                setTimeout(function() {
+                    let updatedId = $('#editId').val();
+                    let updatedNama = $('#editNama').val();
+                    let updatedHarga = $('#editHarga').val();
+    
+                    currentRow.data([updatedId, updatedNama, updatedHarga]).draw(false);
+                    $('#modalBarang').modal('hide');
+
+                    btn.html(originalText).prop('disabled', false); 
+                    btnOther.html(originalTextOther).prop('disabled', false);
+                }, 1000)
             } else {
                 form.reportValidity();
             }
         });
 
         // delete modal
-        $('#btnHapus').click(function() {
-            currentRow.remove().draw(false);
-            $('#modalBarang').modal('hide'); 
+        $('#btnDestroy').click(function() {
+            let btnSelected = $(this);
+            let btnOther = $('#btnUpdate');
+
+            let originalText = btnSelected.text();
+            let originalTextOther = btnOther.text();
+
+            btnSelected.html('<span class="spinner-border spinner-border-sm"></span><span> Loading...</span>').prop('disabled', true);
+            btnOther.html('<span class="spinner-border spinner-border-sm"></span><span> Loading...</span>').prop('disabled', true);
+
+            setTimeout(function() {
+                currentRow.remove().draw(false);
+                $('#modalBarang').modal('hide');
+                
+                btnSelected.html(originalText).prop('disabled', false); 
+                btnOther.html(originalTextOther).prop('disabled', false); 
+            }, 1000)
         });
     });
 </script>

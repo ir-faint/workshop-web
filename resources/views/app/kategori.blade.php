@@ -69,7 +69,7 @@
     <div class="modal fade" id="updateKategoriModal{{ $k->idkategori }}" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form action="{{ route('kategori.update') }}" method="POST">
+                <form id="formUpdate" action="{{ route('kategori.update') }}" method="POST">
                     @csrf @method('PUT')
                     <div class="modal-header"><h5 class="modal-title">Edit Kategori</h5></div>
                     <div class="modal-body">
@@ -86,7 +86,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-gradient-secondary btn-fw" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-gradient-primary btn-fw">Save Changes</button>
+                        <button class="btn btn-gradient-primary btn-fw" onclick="submitForm(this, 'formUpdate')">Save Changes</button>
                     </div>
                 </form>
             </div>
@@ -95,7 +95,7 @@
     <div class="modal fade" id="destroyKategoriModal{{ $k->idkategori }}" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form action="{{ route('kategori.destroy') }}" method="POST">
+                <form id="formDelete" action="{{ route('kategori.destroy') }}" method="POST">
                     @csrf @method('DELETE')
                     <div class="modal-header"><h5 class="modal-title">Delete Kategori</h5></div>
                     <div class="modal-body">
@@ -105,7 +105,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-gradient-secondary btn-fw" data-bs-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-gradient-primary btn-fw">Yes</button>                            
+                        <button class="btn btn-gradient-primary btn-fw" onclick="submitForm(this, 'formDelete')">Yes</button>                            
                     </div>
                 </form>
             </div>
