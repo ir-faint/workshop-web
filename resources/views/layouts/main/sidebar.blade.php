@@ -18,30 +18,30 @@
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
             </a>
         </li> --}}
-        {{-- {{ Request::is('home*') ? 'active' : '' }} --}}
-        <li class="nav-item ">
+        
+        <li class="nav-item {{ Request::is('home*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('home') }}">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
-        {{-- {{ Request::is('kategori*') ? 'active' : '' }} --}}
-        <li class="nav-item ">
+        
+        <li class="nav-item {{ Request::is('kategori*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('kategori') }}">
                 <span class="menu-title">Kategori</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
         </li>
-        {{-- {{ Request::is('buku*') ? 'active' : '' }} --}}
-        <li class="nav-item ">
+        
+        <li class="nav-item {{ Request::is('buku*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('buku') }}">
                 <span class="menu-title">Buku</span>
                 <i class="mdi mdi-book-open-page-variant menu-icon"></i>
             </a>
         </li>
-        {{-- {{ Request::is('pdf*') ? 'active' : '' }} --}}
+        
         {{-- pdf --}}
-        <li class="nav-item ">
+        <li class="nav-item {{ Request::is('pdf*') ? 'active' : '' }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#pdf" aria-expanded="false" aria-controls="pdf">
                 <span class="menu-title">PDF</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
@@ -57,17 +57,17 @@
                 </ul>
             </div>
         </li>
-{{-- {{ Request::is('barang*') ? 'active' : '' }} --}}
+
         {{-- barang pdf --}}
-        <li class="nav-item ">
+        <li class="nav-item {{ Request::is('barang*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('barang') }}">
                 <span class="menu-title">Barang</span>
                 <i class="mdi mdi-archive menu-icon"></i>
             </a>
         </li>
-{{-- {{ Request::is('javascript/*') ? 'active' : '' }} --}}
+
         {{-- javascript --}}
-        <li class="nav-item ">
+        <li class="nav-item {{ Request::is('javascript/*') ? 'active' : '' }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#js" aria-expanded="false" aria-controls="js">
                 <span class="menu-title">JavaScript</span>
                 <i class="mdi mdi-archive menu-icon"></i>
@@ -82,6 +82,31 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('js.kotajs') }}">Kota JS</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+
+        {{-- ajax/axios --}}
+        <li class="nav-item {{ Request::is('ajax-axios/*') ? 'active' : '' }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ajax/axios" aria-expanded="false" aria-controls="js">
+                <span class="menu-title">Ajax/Axios</span>
+                <i class="mdi mdi-archive menu-icon"></i>
+            </a>
+            <div class="collapse {{ Request::is('ajax-axios/*') ? 'show' : '' }}" id="ajax/axios">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('administrasi.ajax') }}">Administrasi (Ajax)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('administrasi.axios') }}">Administrasi (Axios)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('ajax-axios/penjualanAjax/*') ? 'active' : '' }}" href="{{ route('penjualan.ajax') }}">Penjualan (Ajax)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('ajax-axios/penjualanAxios/*') ? 'active' : '' }}" href="{{ route('penjualan.axios') }}">Penjualan (Axios)</a>
                     </li>
                 </ul>
             </div>

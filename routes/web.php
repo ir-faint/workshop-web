@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AjaxAxios\AdministrasiAjaxController;
+use App\Http\Controllers\AjaxAxios\AdministrasiAxiosController;
+use App\Http\Controllers\AjaxAxios\PenjualanAjaxController;
+use App\Http\Controllers\AjaxAxios\PenjualanAxiosController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\HomeController;
@@ -58,4 +62,28 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/javascript/kotajs', function () {
         return view('javascript.kotajs');
     })->name('js.kotajs');
+
+    // ajax/axios
+    Route::get('/ajax-axios/administrasiAjax', [AdministrasiAjaxController::class, 'index'])->name('administrasi.ajax');
+    Route::post('/ajax-axios/administrasiAjax/get-kota', [AdministrasiAjaxController::class, 'getKota'])->name('administrasi.ajax.getKota');
+    Route::post('/ajax-axios/administrasiAjax/get-kecamatan', [AdministrasiAjaxController::class, 'getKecamatan'])->name('administrasi.ajax.getKecamatan');
+    Route::post('/ajax-axios/administrasiAjax/get-kelurahan', [AdministrasiAjaxController::class, 'getKelurahan'])->name('administrasi.ajax.getKelurahan');
+
+    Route::get('/ajax-axios/administrasiAxios', [AdministrasiAxiosController::class, 'index'])->name('administrasi.axios');
+    Route::post('/ajax-axios/administrasiAxios/get-kota', [AdministrasiAxiosController::class, 'getKota'])->name('administrasi.axios.getKota');
+    Route::post('/ajax-axios/administrasiAxios/get-kecamatan', [AdministrasiAxiosController::class, 'getKecamatan'])->name('administrasi.axios.getKecamatan');
+    Route::post('/ajax-axios/administrasiAxios/get-kelurahan', [AdministrasiAxiosController::class, 'getKelurahan'])->name('administrasi.axios.getKelurahan');
+
+    Route::get('/ajax-axios/penjualanAjax', [PenjualanAjaxController::class, 'index'])->name('penjualan.ajax');
+    Route::get('/ajax-axios/penjualanAjax/create', [PenjualanAjaxController::class, 'create'])->name('penjualan.ajax.create');
+    Route::post('/ajax-axios/penjualanAjax/searchBarang', [PenjualanAjaxController::class, 'searchBarang'])->name('penjualan.ajax.search');
+    Route::post('/ajax-axios/penjualanAjax/store', [PenjualanAjaxController::class, 'store'])->name('penjualan.ajax.store');
+    Route::get('/ajax-axios/penjualanAjax/{id}/details', [PenjualanAjaxController::class, 'getDetails'])->name('penjualan.ajax.getDetails');
+
+
+    Route::get('/ajax-axios/penjualanAxios', [PenjualanAxiosController::class, 'index'])->name('penjualan.axios');
+    Route::get('/ajax-axios/penjualanAxios/create', [PenjualanAxiosController::class, 'create'])->name('penjualan.axios.create');
+    Route::post('/ajax-axios/penjualanAxios/searchBarang', [PenjualanAxiosController::class, 'searchBarang'])->name('penjualan.axios.search');
+    Route::post('/ajax-axios/penjualanAxios/store', [PenjualanAxiosController::class, 'store'])->name('penjualan.axios.store');
+    Route::get('/ajax-axios/penjualanAxios/{id}/details', [PenjualanAjaxController::class, 'getDetails'])->name('penjualan.axios.getDetails');
 });
