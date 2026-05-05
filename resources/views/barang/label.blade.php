@@ -27,19 +27,28 @@
             height: 1.8cm; 
             text-align: center;
             box-sizing: border-box;
-            padding-top: 0.3cm;
+            padding-top: 0.1cm;
             font-size: 10pt;
-            /* border: 1px solid red; */
+            border: 1px solid red;
         }
         .item-name {
-            font-size: 8pt;
+            font-size: 7pt;
             font-weight: bold;
             white-space: nowrap;
             overflow: hidden;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
+        }
+        .item-barcode {
+            margin-top: 1px;
+            margin-bottom: 1px;
+        }
+        .item-id {
+            font-size: 6pt;
+            margin-bottom: 1px;
         }
         .item-price {
-            font-size: 10pt;
+            font-size: 8pt;
+            font-weight: bold;
             color: #000;
         }
     </style>
@@ -54,6 +63,7 @@
         $labelH     = 1.8;  // Label height
         $gapX       = 0.3;  // Horizontal gap between stickers
         $gapY       = 0.2;  // Vertical gap between stickers
+        $generator  = new Picqer\Barcode\BarcodeGeneratorPNG();
     @endphp
 
     @foreach ($pages as $page)
@@ -69,7 +79,11 @@
                     @endphp
                     
                     <div class="label-box" style="left: {{ $leftPos }}cm; top: {{ $topPos }}cm;">
-                        <div class="item-name">{{ substr($item->nama_barang, 0, 18) }}</div>
+                        {{-- <div class="item-name">{{ substr($item->nama_barang, 0, 18) }}</div> --}}
+                        <div class="item-barcode">
+                            <img src="data:image/png;base64,{{ base64_encode($generator->getBarcode((string) $item->id_barang, $generator::TYPE_CODE_128, 1, 30)) }}" style="height: 24px;" alt="barcode">
+                        </div>
+                        <div class="item-id">{{ $item->id_barang }}</div>
                         <div class="item-price">Rp {{ number_format($item->harga, 0, ',', '.') }}</div>
                     </div>
                 @endif

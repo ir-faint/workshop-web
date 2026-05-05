@@ -7,7 +7,7 @@
             <div class="card-body">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-5">
-                    <div class="card-title">Buku</div>
+                    <div class="card-title">Barang</div>
                     {{-- <a href="{{ route('buku.create') }}" class="btn btn-sm btn-gradient-primary btn-fw">
                         <i class="mdi mdi-plus btn-icon-prepend"></i> Tambah Buku
                     </a> --}}
@@ -49,13 +49,13 @@
                                 <td>{{ $b->nama_barang}}</td>
                                 <td>Rp{{ number_format($b->harga, 0, ',', '.') }}</td>
                                 <td>
-                                    <input type="number" name="itemQty[{{ $b->idbarang }}]" value="0" min="0" class="form-control">
+                                    <input type="number" name="itemQty[{{ $b->id_barang }}]" value="0" min="0" class="form-control">
                                 </td>
                             </tr>
                             
                             @empty
                             <tr>
-                                <td colspan="6" class="align-middle text-center">No Datas Found!</td>
+                                <td colspan="4" class="align-middle text-center">No Datas Found!</td>
                             </tr>
                             @endforelse
                         </tbody>

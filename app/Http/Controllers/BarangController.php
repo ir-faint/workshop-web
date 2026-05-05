@@ -18,22 +18,22 @@ class BarangController extends Controller
     {
         $x = (int) $request->input('x');
         $y = (int) $request->input('y');
-        $Totqty = $request->input('itemQty');
+        $Totqty = $request->input('itemQty') ?? [];
         $print = [];
-        // dd($print);
-        // dd($Totqty);
-        foreach ($Totqty as $id => $qty) {
-            // dd($qty);
-            if ($qty > 0) {
-                $barang = Barang::find($id);
-                // dd($barang);
-                if ($barang) {
+
+        $itemsToPrint = array_filter($Totqty, fn($qty) => $qty > 0);
+
+        if (!empty($itemsToPrint)) {
+            $barangs = Barang::whereIn('id_barang', array_keys($itemsToPrint))->get()->keyBy('id_barang');
+            foreach ($itemsToPrint as $id => $qty) {
+                if (isset($barangs[$id])) {
                     for ($i = 0; $i < $qty; $i++) {
-                        $print[] = $barang;
+                        $print[] = $barangs[$id];
                     }
                 }
             }
         }
+    
         if (empty($print)) {
             return back()->withErrors(['message' => 'Masukkan jumlah diatas 0 untuk minimal satu item/barang']);
         }
