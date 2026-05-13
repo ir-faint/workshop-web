@@ -46,7 +46,7 @@
                             @forelse ($barang as $b)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $b->nama_barang}}</td>
+                                <td>{{ $b->nama}}</td>
                                 <td>Rp{{ number_format($b->harga, 0, ',', '.') }}</td>
                                 <td>
                                     <input type="number" name="itemQty[{{ $b->id_barang }}]" value="0" min="0" class="form-control">

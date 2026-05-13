@@ -52,6 +52,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/barang', [BarangController::class, 'index'])->name('barang');
     Route::post('/barang/label', [BarangController::class, 'label'])->name('barang.label');
 
+    // customer
+    Route::get('/customer', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');
+    Route::get('/customer/create1', [\App\Http\Controllers\CustomerController::class, 'create1'])->name('customer.create1');
+    Route::post('/customer/store1', [\App\Http\Controllers\CustomerController::class, 'store1'])->name('customer.store1');
+    Route::get('/customer/create2', [\App\Http\Controllers\CustomerController::class, 'create2'])->name('customer.create2');
+    Route::post('/customer/store2', [\App\Http\Controllers\CustomerController::class, 'store2'])->name('customer.store2');
+
     // javascript
     Route::get('/javascript/itemjs', function () {
         return view('javascript.barangjs');

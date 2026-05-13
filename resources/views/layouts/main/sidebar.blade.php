@@ -66,6 +66,27 @@
             </a>
         </li>
 
+        {{-- customer --}}
+        <li class="nav-item ">
+            <a class="nav-link {{ Request::is('customer*') ? 'active' : '' }}" data-bs-toggle="collapse" href="#customer" aria-expanded="false" aria-controls="customer">
+                <span class="menu-title">Customer</span>
+                <i class="mdi mdi-account-group menu-icon"></i>
+            </a>
+            <div class="collapse {{ Request::is('customer*') ? 'show' : '' }}" id="customer">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('customer.index') ? 'active' : '' }}" href="{{ route('customer.index') }}">Data Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('customer.create1') ? 'active' : '' }}" href="{{ route('customer.create1') }}">Tambah Customer 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('customer.create2') ? 'active' : '' }}" href="{{ route('customer.create2') }}">Tambah Customer 2</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
         {{-- javascript --}}
         <li class="nav-item {{ Request::is('javascript/*') ? 'active' : '' }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#js" aria-expanded="false" aria-controls="js">
