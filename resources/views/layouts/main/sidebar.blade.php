@@ -58,12 +58,22 @@
             </div>
         </li>
 
-        {{-- barang pdf --}}
-        <li class="nav-item {{ Request::is('barang*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('barang') }}">
+        {{-- barang --}}
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('barang*') ? 'active' : '' }}" data-bs-toggle="collapse" href="#barang" aria-expanded="false" aria-controls="barang">
                 <span class="menu-title">Barang</span>
                 <i class="mdi mdi-archive menu-icon"></i>
             </a>
+            <div class="collapse {{ Request::is('barang*') ? 'show' : '' }}" id="barang">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('barang') ? 'active' : '' }}" href="{{ route('barang') }}">Data Barang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('barang.scan') ? 'active' : '' }}" href="{{ route('barang.scan') }}">Scan Barcode</a>
+                    </li>
+                </ul>
+            </div>
         </li>
 
         {{-- customer --}}

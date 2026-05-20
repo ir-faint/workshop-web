@@ -50,4 +50,33 @@ class BarangController extends Controller
 
         return $pdf->stream('label.pdf');
     }
+
+    public function scan()
+    {
+        return view('barang.scan')->with('title', 'Scan Barcode');
+    }
+
+    public function scanDetail(Request $request)
+    {
+        $id_barang = $request->input('id_barang');
+        
+        if (!$id_barang) {
+            return response()->json(['success' => false, 'message' => 'ID Barang tidak ditemukan']);
+        }
+
+        $barang = Barang::find($id_barang);
+
+        if ($barang) {
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'id_barang' => $barang->id_barang,
+                    'nama_barang' => $barang->nama,
+                    'harga' => $barang->harga
+                ]
+            ]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Barang tidak ditemukan']);
+    }
 }

@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     // barang
     Route::get('/barang', [BarangController::class, 'index'])->name('barang');
     Route::post('/barang/label', [BarangController::class, 'label'])->name('barang.label');
+    Route::get('/barang/scan', [BarangController::class, 'scan'])->name('barang.scan');
+    Route::post('/barang/scan/detail', [BarangController::class, 'scanDetail'])->name('barang.scan.detail');
 
     // customer
     Route::get('/customer', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');

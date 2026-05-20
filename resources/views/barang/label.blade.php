@@ -29,7 +29,7 @@
             box-sizing: border-box;
             padding-top: 0.1cm;
             font-size: 10pt;
-            border: 1px solid red;
+            /* border: 1px solid red; */
         }
         .item-name {
             font-size: 7pt;
@@ -81,7 +81,7 @@
                     <div class="label-box" style="left: {{ $leftPos }}cm; top: {{ $topPos }}cm;">
                         {{-- <div class="item-name">{{ substr($item->nama_barang, 0, 18) }}</div> --}}
                         <div class="item-barcode">
-                            <img src="data:image/png;base64,{{ base64_encode($generator->getBarcode((string) $item->id_barang, $generator::TYPE_CODE_128, 1, 30)) }}" style="height: 24px;" alt="barcode">
+                            <img src="data:image/png;base64,{{ base64_encode($generator->getBarcode((string) $item->id_barang, $generator::TYPE_CODE_128, 2, 40)) }}" style="height: 36px; max-width: 3.4cm; object-fit: contain;" alt="barcode">
                         </div>
                         <div class="item-id">{{ $item->id_barang }}</div>
                         <div class="item-price">Rp {{ number_format($item->harga, 0, ',', '.') }}</div>
