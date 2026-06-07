@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     <label for="kota">Kota:</label>
-                    <select id="kota" class="form-select" disabled>
+                    <select id="kota" class="form-select" disabled>~
                         <option value="">-- Pilih Kota --</option>
                     </select>
                 </div>

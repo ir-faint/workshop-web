@@ -7,6 +7,7 @@ use App\Http\Controllers\AjaxAxios\PenjualanAxiosController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KunjunganTokoController;
 use App\Http\Controllers\Main\BukuController;
 use App\Http\Controllers\Main\KategoriController;
 use App\Http\Controllers\PdfController;
@@ -95,4 +96,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/ajax-axios/penjualanAxios/searchBarang', [PenjualanAxiosController::class, 'searchBarang'])->name('penjualan.axios.search');
     Route::post('/ajax-axios/penjualanAxios/store', [PenjualanAxiosController::class, 'store'])->name('penjualan.axios.store');
     Route::get('/ajax-axios/penjualanAxios/{id}/details', [PenjualanAjaxController::class, 'getDetails'])->name('penjualan.axios.getDetails');
+
+    // kunjungan toko (geolocation)
+    Route::get('/lokasi-toko', [KunjunganTokoController::class, 'index'])->name('lokasi_toko.index');
+    Route::get('/lokasi-toko/create', [KunjunganTokoController::class, 'create'])->name('lokasi_toko.create');
+    Route::post('/lokasi-toko/store', [KunjunganTokoController::class, 'store'])->name('lokasi_toko.store');
+    Route::get('/lokasi-toko/qrcode/{qrcode}', [KunjunganTokoController::class, 'printQrCode'])->name('lokasi_toko.qrcode');
+    
+    Route::get('/kunjungan-toko/scan', [KunjunganTokoController::class, 'visit'])->name('kunjungan_toko.visit');
+    Route::post('/kunjungan-toko/scan/detail', [KunjunganTokoController::class, 'getStoreData'])->name('kunjungan_toko.scan.detail');
 });

@@ -97,6 +97,27 @@
             </div>
         </li>
 
+        {{-- kunjungan toko --}}
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('lokasi-toko*') || Request::is('kunjungan-toko*') ? 'active' : '' }}" data-bs-toggle="collapse" href="#kunjungan_toko" aria-expanded="false" aria-controls="kunjungan_toko">
+                <span class="menu-title">Kunjungan Toko</span>
+                <i class="mdi mdi-map-marker-distance menu-icon"></i>
+            </a>
+            <div class="collapse {{ Request::is('lokasi-toko*') || Request::is('kunjungan-toko*') ? 'show' : '' }}" id="kunjungan_toko">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('lokasi_toko.index') ? 'active' : '' }}" href="{{ route('lokasi_toko.index') }}">Lokasi Toko</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('lokasi_toko.create') ? 'active' : '' }}" href="{{ route('lokasi_toko.create') }}">Input Titik Awal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('kunjungan_toko.visit') ? 'active' : '' }}" href="{{ route('kunjungan_toko.visit') }}">Scan Kunjungan</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
         {{-- javascript --}}
         <li class="nav-item {{ Request::is('javascript/*') ? 'active' : '' }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#js" aria-expanded="false" aria-controls="js">
